@@ -2,11 +2,10 @@
 -target:library
 -nowarn:0169
 -out:'Temp/Assembly-CSharp.dll'
--r:'/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll'
--r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll'
--r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll'
+-r:'/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.dll'
+-r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/Standalone/UnityEngine.UI.dll'
+-r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/Standalone/UnityEngine.Networking.dll'
 -r:'Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll'
--r:'/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll'
 -define:UNITY_5_3_OR_NEWER
 -define:UNITY_5_4_OR_NEWER
 -define:UNITY_5_4_2
@@ -74,14 +73,6 @@
 -define:ENABLE_UNITYADS_RUNTIME
 -define:UNITY_UNITYADS_API
 -define:ENABLE_MONO
--define:ENABLE_PROFILER
--define:DEBUG
--define:TRACE
--define:UNITY_ASSERTIONS
--define:UNITY_EDITOR
--define:UNITY_EDITOR_64
--define:UNITY_EDITOR_OSX
--define:UNITY_TEAM_LICENSE
 -define:VUFORIA_ANDROID_SETTINGS
 -define:VUFORIA_SAMPLE_ORIENTATION_SETTINGS
 'Assets/Common/CameraSettings.cs'
@@ -123,6 +114,7 @@
 'Assets/SamplesResources/VuforiaSamplesUI/Scripts/SamplesMainMenu.cs'
 'Assets/SamplesResources/VuforiaSamplesUI/Scripts/SamplesNavigationHandler.cs'
 'Assets/SamplesResources/VuforiaSamplesUI/Scripts/SamplesTapHandler.cs'
+'Assets/Scripts/LocationManager.cs'
 'Assets/Scripts/RotaterPosition.cs'
 'Assets/Vuforia/Scripts/BackgroundPlaneBehaviour.cs'
 'Assets/Vuforia/Scripts/CloudRecoBehaviour.cs'
