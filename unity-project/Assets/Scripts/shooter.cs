@@ -18,8 +18,10 @@ public class shooter : MonoBehaviour {
         bulletSpawn.position,
         bulletSpawn.rotation);
 
+    bullet.transform.Rotate(-90,180,0);
+
     // Add velocity to the bullet
-    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * force;
+    bullet.GetComponent<Rigidbody>().velocity = bulletSpawn.transform.forward * force;
 
     // Destroy the bullet after 2 seconds
     Destroy(bullet, 2.0f);        
