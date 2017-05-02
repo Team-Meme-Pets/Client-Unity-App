@@ -10,7 +10,7 @@ public class shooter : MonoBehaviour {
   void Start () {
   }
 
-  void Fire()
+  public void Fire()
   {
     // Create the Bullet from the Bullet Prefab
     var bullet = (GameObject)Instantiate(
@@ -35,18 +35,5 @@ public class shooter : MonoBehaviour {
     transform.Rotate(0, x, 0);
     transform.Translate(0, 0, z);
 
-    if (Input.GetKeyDown(KeyCode.Space)){
-      Fire();
-    }
-
-
-    if (Input.GetMouseButtonDown(0)){
-      Fire();
-    }
   }
-
-  void OnMouseDown(){
-    Fire();
-  }
-
 }

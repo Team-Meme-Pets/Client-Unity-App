@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class LocationManager : MonoBehaviour {
-  public GameObject rotaterGO;
+  private string hostname = "http://bc1691.code.engineering.nyu.edu:9800/";
 
   // Use this for initialization
   IEnumerator Start(){
@@ -53,19 +53,40 @@ public class LocationManager : MonoBehaviour {
   // Update is called once per frame
   void Update () {
     //only update every 3 minutes
-    if(Time.time % 3*60 == 0){
+    if(Time.time % 30 == 0){
       serverUpdate();
       modelUpdate();
     }
 
   }
 
+  public void forceUpdate(){
+    //serverUpdate();
+    modelUpdate();
+  }
+
   void serverUpdate(){
-    //WWW update
+    WWWForm postData = new WWWForm();
+    postData.AddField("latitude",Input.location.lastData.latitude.ToString());
+    postData.AddField("longitude",Input.location.lastData.longitude.ToString());
+
+    WWW www = new WWW(hostname+"sendLoc", postData);
+
+    while(!www.isDone){}
+
+    print(www.responseHeaders["STATUS"]);
+
   }
 
   void modelUpdate(){
-    //WWW request to the server
-    //then just load the models at the right spot
+    WWWForm postData = new WWWForm();
+
+    WWW www = new WWW(hostname+"viewPets", postData);
+
+    while(!www.isDone){}
+
+    //print(www.responseHeaders["STATUS"]);
+    string json = System.Text.Encoding.UTF8.GetString(www.bytes);
+    Debug.LogWarning(json);
   }
 }

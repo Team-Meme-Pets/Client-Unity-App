@@ -28,17 +28,14 @@ public class GUIFunctions : MonoBehaviour {
 
     while(!www.isDone){}
 
-    print(System.Text.Encoding.UTF8.GetString(www.bytes));
-
-    //if it worked alert the user
-    if(parseResponseCode(www.responseHeaders["STATUS"]) == 302){
+    if(parseResponseCode(www.responseHeaders["STATUS"]) == 302 || parseResponseCode(www.responseHeaders["STATUS"]) == 200){
       loginAlert.text = "Login Success";
     }
     else{
       loginAlert.text = "Login Failure";
       Debug.LogWarning(www.responseHeaders["STATUS"]);
+      Debug.LogWarning(System.Text.Encoding.UTF8.GetString(www.bytes));
     }
-    //if it failed alert the user
 
   }
 
@@ -52,7 +49,28 @@ public class GUIFunctions : MonoBehaviour {
 
     while(!www.isDone){}
 
-    print(System.Text.Encoding.UTF8.GetString(www.bytes));
+    if(parseResponseCode(www.responseHeaders["STATUS"]) == 302 || parseResponseCode(www.responseHeaders["STATUS"]) == 200){
+      signupAlert.text = "Signup Success";
+    }
+    else{
+      signupAlert.text = "Signup Failure";
+      Debug.LogWarning(www.responseHeaders["STATUS"]);
+      Debug.LogWarning(System.Text.Encoding.UTF8.GetString(www.bytes));
+    }
+
+
+  }
+
+  public void logout(){
+    WWW www = new WWW(hostname+"logout");
+    while(!www.isDone){}
+    print(www.responseHeaders["STATUS"]);
+       /*
+    WWW www = new WWW("https://jsonplaceholder.typicode.com/posts");
+    while(!www.isDone){}
+    print(www.responseHeaders["STATUS"]);
+    Debug.LogWarning(System.Text.Encoding.UTF8.GetString(www.bytes));
+    */
 
   }
 
@@ -72,4 +90,5 @@ public class GUIFunctions : MonoBehaviour {
 
     return ret;
   }
+
 }
